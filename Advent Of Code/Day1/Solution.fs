@@ -10,12 +10,12 @@ let lines = File.ReadLines(inputFilePath)
 
 let processLine (line: string) =
     let parts = line.Split(' ') |> Array.filter (fun part -> part.Trim() <> "")
-    int parts.[0], int parts.[1]
+    int parts[0], int parts[1]
 
 let leftList, rightList =
     lines
-    |> Seq.map (processLine)
-    |> Seq.fold (fun (leftList, rightList) (x, y) -> (leftList @ [ x ], rightList @ [ y ])) ([], [])
+    |> Seq.map processLine
+    |> Seq.fold (fun (leftList, rightList) (x, y) -> (x :: leftList, y :: rightList)) ([], [])
     |> fun (leftList, rightList) -> leftList |> List.toArray, rightList |> List.toArray
 
 // Part one
@@ -26,7 +26,7 @@ let distances () =
     Array.zip sortedLeft sortedRight
     |> Array.map (fun (l, r) -> (max l r) - (min l r))
     |> Array.reduce (fun acc distance -> acc + distance)
-    |> fun (distance) -> printfn $"Total distance: {distance}"
+    |> fun distance -> printfn $"Total distance: {distance}"
 
 // Part two
 let similarity () =
@@ -37,7 +37,7 @@ let similarity () =
     |> Array.filter (fun (_num, count) -> count > 0)
     |> Array.map (fun (num, count) -> num * count)
     |> Array.reduce (fun acc similarity -> acc + similarity)
-    |> fun (distance) -> printfn $"Similarity score: {distance}"
+    |> fun distance -> printfn $"Similarity score: {distance}"
 
 distances ()
 similarity ()
