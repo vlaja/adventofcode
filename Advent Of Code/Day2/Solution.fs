@@ -1,3 +1,4 @@
+// Day 2: https://adventofcode.com/2024/day/2
 module Advent_Of_Code.Day2.Solution
 
 open System.IO
