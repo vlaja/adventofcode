@@ -8,11 +8,13 @@ let inputFilePath = Path.Combine(__SOURCE_DIRECTORY__, "Input.txt")
 
 let lines = File.ReadLines(inputFilePath)
 
+let processLine (line: string) =
+    let parts = line.Split(' ') |> Array.filter (fun part -> part.Trim() <> "")
+    int parts.[0], int parts.[1]
+
 let leftList, rightList =
     lines
-    |> Seq.map (fun line ->
-        let parts = line.Split(' ') |> Array.filter (fun part -> part.Trim() <> "")
-        int parts.[0], int parts.[1])
+    |> Seq.map (processLine)
     |> Seq.fold (fun (leftList, rightList) (x, y) -> (leftList @ [ x ], rightList @ [ y ])) ([], [])
     |> fun (leftList, rightList) -> leftList |> List.toArray, rightList |> List.toArray
 
