@@ -25,7 +25,7 @@ let distances () =
 
     Array.zip sortedLeft sortedRight
     |> Array.map (fun (l, r) -> (max l r) - (min l r))
-    |> Array.reduce (fun acc distance -> acc + distance)
+    |> Array.sum
     |> fun distance -> printfn $"Total distance: {distance}"
 
 // Part two
@@ -36,7 +36,7 @@ let similarity () =
         num, count)
     |> Array.filter (fun (_num, count) -> count > 0)
     |> Array.map (fun (num, count) -> num * count)
-    |> Array.reduce (fun acc similarity -> acc + similarity)
+    |> Array.sum
     |> fun distance -> printfn $"Similarity score: {distance}"
 
 distances ()
