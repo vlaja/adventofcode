@@ -58,10 +58,12 @@ let countSafeReportsGeneric safetyCheck =
     |> Seq.toList
     |> List.length
 
+// Part one
 let countSafeReports () =
     countSafeReportsGeneric isSafe
     |> fun (count) -> printfn $"Number of safe levels: {count}"
 
+// Part two
 let countSafeReportsWithDampener () =
     countSafeReportsGeneric (withDampener isSafe)
     |> fun (count) -> printfn $"Number of safe levels with problem dampener enabled: {count}"
