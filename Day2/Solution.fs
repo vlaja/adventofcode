@@ -51,7 +51,7 @@ let withDampener isSafe (numbers: int[], minOffset: int, maxOffset: int) =
     | true -> true
     | false -> applyDampener (numbers, minOffset, maxOffset)
 
-let countSafeReportsGeneric safetyCheck =
+let getLength safetyCheck =
     levels
     |> Seq.map (fun numbers -> numbers, safetyCheck (numbers, 1, 3))
     |> Seq.filter (fun (numbers, isSafe) -> isSafe = true)
@@ -60,12 +60,12 @@ let countSafeReportsGeneric safetyCheck =
 
 // Part one
 let countSafeReports () =
-    countSafeReportsGeneric isSafe
+    getLength isSafe
     |> fun (count) -> printfn $"Number of safe levels: {count}"
 
 // Part two
 let countSafeReportsWithDampener () =
-    countSafeReportsGeneric (withDampener isSafe)
+    getLength (withDampener isSafe)
     |> fun (count) -> printfn $"Number of safe levels with problem dampener enabled: {count}"
 
 countSafeReports ()
