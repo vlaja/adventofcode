@@ -1,5 +1,5 @@
 // Day 2: https://adventofcode.com/2024/day/2
-module Advent_Of_Code.Day2.Solution
+module Advent_Of_Code.Solutions
 
 open System.IO
 open FSharp.Collections

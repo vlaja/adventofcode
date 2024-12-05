@@ -1,5 +1,5 @@
 ﻿// Day 3: https://adventofcode.com/2024/day/3
-module Advent_Of_Code.Day3.Solution
+module Advent_Of_Code.Solutions
 
 open System.IO
 open System.Text.RegularExpressions
